@@ -1,0 +1,22 @@
+### GET / 
+GET http://localhost:8001
+
+
+### CREATE USER
+POST http://localhost:8001/auth/register
+Content-Type: application/json
+
+{
+    "username": "ass@mail.com",
+    "password": "ass123"
+}
+
+
+### LOGIN
+POST http://localhost:8001/auth/login
+Content-Type: application/json
+
+{
+    "username": "ass@mail.com",
+    "password": "ass123"
+}
