@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
     // save to db
     try {
         const insertUser = db.prepare(`INSERT INTO users(username, password) VALUES(?, ?)`)
-        const result = insertUser.run(username, password)
+        const result = insertUser.run(username, hashedPassword)
     
         // default todo
         const defaultTodo = `Add a ToDo!`
@@ -45,10 +45,12 @@ router.post('/login', (req, res) => {
         }
 
         const passwordIsValid = bcrypt.compareSync(password, user.password)
+
         if (!passwordIsValid) {return res.status(401).send({message:"Invalid password"})}
 
         console.log(user)
-        const token = jwt.sign({id: user.id})
+        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, { expiresIn: '24h' })
+        res.json({ token })
     } catch (err) {
         console.log(err.message)
         res.sendStatus(503)

@@ -8,7 +8,7 @@ Content-Type: application/json
 
 {
     "username": "ass@mail.com",
-    "password": "ass123"
+    "password": "123456"
 }
 
 
@@ -18,5 +18,34 @@ Content-Type: application/json
 
 {
     "username": "ass@mail.com",
-    "password": "ass123"
+    "password": "123456"
 }
+
+
+### Fetch all todos (Auth token req)
+GET http://localhost:8001/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU4ODk3MDMwLCJleHAiOjE3NTg5ODM0MzB9.tPfWAOIWIyACSCVThM5aHIwY7QmZELKfSAx2k0oO59Q
+
+### Create a new todo (Auth token req)
+POST http://localhost:8001/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU4ODk3MDMwLCJleHAiOjE3NTg5ODM0MzB9.tPfWAOIWIyACSCVThM5aHIwY7QmZELKfSAx2k0oO59Q
+Content-Type: application/json
+
+{
+    "task": "finish it"
+}
+
+
+### Update a todo
+PUT http://localhost:8001/todos/2?page=4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU4ODk3MDMwLCJleHAiOjE3NTg5ODM0MzB9.tPfWAOIWIyACSCVThM5aHIwY7QmZELKfSAx2k0oO59Q
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+
+### Delete a todo
+DELETE http://localhost:8001/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU4ODk3MDMwLCJleHAiOjE3NTg5ODM0MzB9.tPfWAOIWIyACSCVThM5aHIwY7QmZELKfSAx2k0oO59Q
